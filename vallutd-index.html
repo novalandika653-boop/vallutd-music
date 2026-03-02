@@ -1,0 +1,2920 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vallutd — Noval Andika | Official Music</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #E8001A;
+  --red-dark: #A50012;
+  --red-glow: rgba(232,0,26,0.35);
+  --blue: #1A4AE8;
+  --blue-dark: #0D2FA0;
+  --blue-glow: rgba(26,74,232,0.35);
+  --bg: #080810;
+  --bg2: #0D0D1A;
+  --bg3: #121224;
+  --bg4: #1A1A30;
+  --surface: #16162A;
+  --surface2: #1E1E36;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --text: #F0F0FF;
+  --text-dim: #8888AA;
+  --text-muted: #555570;
+  --premium: #FFB800;
+  --premium-glow: rgba(255,184,0,0.3);
+  --success: #00C853;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --r: 8px;
+  --r2: 14px;
+  --transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+/* ========== NOISE OVERLAY ========== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ========== NAVBAR ========== */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(8,8,16,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 0;
+  transition: var(--transition);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: 3px;
+  background: linear-gradient(135deg, var(--red) 0%, var(--blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 32px;
+  flex: 1;
+}
+
+.nav-menu a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: var(--r);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.nav-menu a:hover, .nav-menu a.active {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.nav-menu a.active { color: var(--red); }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: var(--r);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border2);
+  color: var(--text-dim);
+}
+.btn-outline:hover { border-color: var(--red); color: var(--red); }
+
+.btn-primary {
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 0 20px var(--red-glow);
+}
+.btn-primary:hover { background: var(--red-dark); box-shadow: 0 0 30px var(--red-glow); }
+
+.btn-blue {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 0 20px var(--blue-glow);
+}
+.btn-blue:hover { background: var(--blue-dark); }
+
+.btn-premium {
+  background: linear-gradient(135deg, var(--premium) 0%, #FF8C00 100%);
+  color: #000;
+  box-shadow: 0 0 20px var(--premium-glow);
+}
+.btn-premium:hover { filter: brightness(1.1); }
+
+.btn-ghost {
+  background: var(--surface);
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover { color: var(--text); border-color: var(--border2); }
+
+.btn-sm { padding: 6px 14px; font-size: 12px; }
+.btn-xs { padding: 4px 10px; font-size: 11px; }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+  margin-left: auto;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ========== PAGES ========== */
+.page { display: none; padding-top: 64px; min-height: 100vh; }
+.page.active { display: block; }
+
+/* ========== HERO ========== */
+.hero {
+  position: relative;
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 60px 24px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(26,74,232,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 20% 50%, rgba(232,0,26,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 50% 100%, rgba(232,0,26,0.08) 0%, transparent 50%);
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(232,0,26,0.12);
+  border: 1px solid rgba(232,0,26,0.25);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(60px, 10vw, 130px);
+  line-height: 0.9;
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+}
+
+.hero-title span {
+  display: block;
+  background: linear-gradient(135deg, #fff 30%, var(--blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-title .red-line {
+  background: linear-gradient(135deg, var(--red) 0%, #FF6B6B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 18px;
+  color: var(--text-dim);
+  max-width: 520px;
+  margin-bottom: 40px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hero-note {
+  margin-top: 60px;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--blue);
+  border-radius: var(--r);
+  font-size: 13px;
+  color: var(--text-dim);
+  max-width: 700px;
+  line-height: 1.8;
+}
+
+.hero-note strong { color: var(--text); }
+
+/* ========== SECTION ========== */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  letter-spacing: 3px;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--red), var(--blue));
+  border-radius: 2px;
+  margin-top: 6px;
+}
+
+/* ========== MUSIC GRID ========== */
+.songs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.song-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  overflow: hidden;
+  transition: var(--transition);
+  cursor: pointer;
+  position: relative;
+}
+
+.song-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+
+.song-cover {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--bg4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.song-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+.song-cover-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bg3) 0%, var(--bg4) 100%);
+}
+
+.song-cover-icon {
+  font-size: 48px;
+  opacity: 0.3;
+}
+
+.song-cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.song-card:hover .song-cover-overlay { opacity: 1; }
+
+.play-btn-large {
+  width: 56px;
+  height: 56px;
+  background: var(--red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px var(--red-glow);
+  transition: var(--transition);
+}
+
+.play-btn-large:hover { transform: scale(1.1); background: var(--red-dark); }
+
+.song-info {
+  padding: 16px;
+}
+
+.song-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.badge-free { background: rgba(0,200,83,0.15); color: var(--success); border: 1px solid rgba(0,200,83,0.2); }
+.badge-paid { background: rgba(26,74,232,0.15); color: #6B9FFF; border: 1px solid rgba(26,74,232,0.2); }
+.badge-premium { background: rgba(255,184,0,0.15); color: var(--premium); border: 1px solid rgba(255,184,0,0.2); }
+
+.song-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.song-meta {
+  font-size: 13px;
+  color: var(--text-dim);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.song-price {
+  font-weight: 700;
+  color: var(--blue);
+  font-size: 14px;
+}
+
+.song-price.free { color: var(--success); }
+.song-price.premium { color: var(--premium); }
+
+/* ========== EMPTY STATE ========== */
+.empty-state {
+  text-align: center;
+  padding: 80px 24px;
+  color: var(--text-muted);
+}
+
+.empty-state-icon { font-size: 64px; margin-bottom: 16px; opacity: 0.5; }
+.empty-state-title { font-family: var(--font-display); font-size: 28px; letter-spacing: 2px; color: var(--text-dim); margin-bottom: 8px; }
+.empty-state p { font-size: 15px; max-width: 400px; margin: 0 auto; }
+
+/* ========== FILTERS ========== */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-btn {
+  padding: 8px 18px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-dim);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-btn:hover { border-color: var(--border2); color: var(--text); }
+.filter-btn.active { background: var(--red); border-color: var(--red); color: #fff; }
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 10px 16px;
+  gap: 10px;
+  flex: 1;
+  min-width: 200px;
+  max-width: 380px;
+  margin-left: auto;
+}
+
+.search-bar input {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  width: 100%;
+}
+
+.search-bar input::placeholder { color: var(--text-muted); }
+
+/* ========== ALBUM GRID ========== */
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.album-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  overflow: hidden;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.album-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+
+.album-cover {
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, var(--bg4) 0%, var(--surface2) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 56px;
+  opacity: 0.4;
+  position: relative;
+  overflow: hidden;
+}
+
+.album-cover img { width: 100%; height: 100%; object-fit: cover; opacity: 1; }
+
+.album-info { padding: 14px; }
+.album-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+.album-meta { font-size: 12px; color: var(--text-muted); }
+
+/* ========== PROFILE PAGE ========== */
+.profile-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.profile-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  padding: 32px;
+  text-align: center;
+  position: sticky;
+  top: 84px;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--red), var(--blue));
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 48px;
+  letter-spacing: 2px;
+  color: #fff;
+  border: 3px solid var(--border2);
+}
+
+.profile-name {
+  font-family: var(--font-display);
+  font-size: 32px;
+  letter-spacing: 3px;
+  background: linear-gradient(135deg, var(--red), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.profile-handle {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  font-family: var(--font-mono);
+}
+
+.profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.tag {
+  background: var(--bg4);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.profile-content h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.profile-content h2::after {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--red), var(--blue));
+  margin-top: 6px;
+}
+
+.prose {
+  color: var(--text-dim);
+  font-size: 15px;
+  line-height: 1.9;
+  margin-bottom: 36px;
+}
+
+.ai-card {
+  background: rgba(26,74,232,0.08);
+  border: 1px solid rgba(26,74,232,0.2);
+  border-radius: var(--r2);
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.ai-card-title {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #6B9FFF;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ai-card p { color: var(--text-dim); font-size: 14px; line-height: 1.8; }
+
+/* ========== SOCIAL PAGE ========== */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.social-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: var(--transition);
+  text-decoration: none;
+  color: var(--text);
+}
+
+.social-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+.social-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.social-info { flex: 1; }
+.social-platform { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2px; }
+.social-handle { font-weight: 700; font-size: 16px; }
+
+.social-arrow { color: var(--text-muted); transition: var(--transition); }
+.social-card:hover .social-arrow { color: var(--text); transform: translateX(3px); }
+
+/* ========== AUTH MODAL ========== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal-overlay.active { display: flex; }
+
+.modal {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: var(--r2);
+  padding: 40px;
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+  animation: modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+@keyframes modalIn {
+  from { transform: scale(0.9) translateY(20px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: var(--surface);
+  border: none;
+  border-radius: 50%;
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: var(--text-dim);
+  font-size: 18px;
+  transition: var(--transition);
+}
+.modal-close:hover { color: var(--text); background: var(--surface2); }
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+
+.modal-sub { font-size: 14px; color: var(--text-dim); margin-bottom: 28px; }
+
+.form-group { margin-bottom: 18px; }
+.form-label { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px; display: block; }
+.form-input {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 12px 16px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  outline: none;
+  transition: var(--transition);
+}
+.form-input:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(232,0,26,0.1); }
+.form-input::placeholder { color: var(--text-muted); }
+
+.form-row { display: flex; gap: 8px; margin-top: 12px; }
+
+.modal-tabs { display: flex; gap: 0; margin-bottom: 28px; border-radius: var(--r); overflow: hidden; border: 1px solid var(--border); }
+.modal-tab {
+  flex: 1; padding: 11px; text-align: center; cursor: pointer;
+  font-family: var(--font-body); font-weight: 700; font-size: 13px;
+  letter-spacing: 1px; text-transform: uppercase; color: var(--text-dim);
+  background: var(--surface); border: none; transition: var(--transition);
+}
+.modal-tab.active { background: var(--red); color: #fff; }
+
+/* ========== ADMIN PANEL ========== */
+.admin-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: calc(100vh - 64px);
+}
+
+.admin-sidebar {
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  padding: 24px 16px;
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+}
+
+.admin-sidebar-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0 12px;
+  margin-bottom: 8px;
+}
+
+.admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--r);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dim);
+  transition: var(--transition);
+  margin-bottom: 2px;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+.admin-nav-item:hover { background: var(--surface); color: var(--text); }
+.admin-nav-item.active { background: rgba(232,0,26,0.12); color: var(--red); }
+
+.admin-content {
+  padding: 32px;
+  overflow-y: auto;
+}
+
+.admin-section { display: none; }
+.admin-section.active { display: block; }
+
+.admin-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.admin-card-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px;
+  text-align: center;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 36px;
+  letter-spacing: 2px;
+  color: var(--red);
+}
+
+.stat-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; }
+
+/* TABLE */
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th {
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  font-weight: 700;
+}
+.data-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text-dim);
+  vertical-align: middle;
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+/* Upload form */
+.upload-area {
+  border: 2px dashed var(--border2);
+  border-radius: var(--r2);
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  background: rgba(255,255,255,0.02);
+}
+.upload-area:hover { border-color: var(--red); background: rgba(232,0,26,0.03); }
+.upload-icon { font-size: 36px; margin-bottom: 12px; }
+.upload-text { color: var(--text-dim); font-size: 14px; }
+.upload-sub { color: var(--text-muted); font-size: 12px; margin-top: 4px; }
+
+select.form-input { cursor: pointer; }
+
+/* ========== MINI PLAYER ========== */
+#mini-player {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(8,8,16,0.96);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  z-index: 900;
+  padding: 12px 24px;
+  display: none;
+  align-items: center;
+  gap: 16px;
+}
+
+#mini-player.visible { display: flex; }
+
+.player-thumb {
+  width: 46px; height: 46px;
+  background: var(--surface2);
+  border-radius: 6px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  overflow: hidden;
+}
+.player-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+.player-info { flex: 1; min-width: 0; }
+.player-title { font-weight: 700; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.player-artist { font-size: 12px; color: var(--text-muted); }
+
+.player-controls { display: flex; align-items: center; gap: 12px; }
+
+.ctrl-btn {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+  padding: 4px;
+}
+.ctrl-btn:hover { color: var(--text); }
+.ctrl-btn.play-pause {
+  width: 40px; height: 40px;
+  background: var(--red);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px var(--red-glow);
+}
+.ctrl-btn.play-pause:hover { background: var(--red-dark); color: #fff; }
+
+.player-progress {
+  flex: 1;
+  max-width: 300px;
+}
+
+.progress-bar {
+  height: 4px;
+  background: var(--bg4);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--red), var(--blue));
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.progress-time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  margin-top: 4px;
+}
+
+.player-vol { display: flex; align-items: center; gap: 8px; }
+.vol-slider { width: 80px; accent-color: var(--red); }
+
+/* ========== TOAST ========== */
+#toast-container {
+  position: fixed;
+  top: 80px; right: 24px;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toast {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: var(--r);
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 280px;
+  animation: slideIn 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }
+
+.toast.success { border-color: rgba(0,200,83,0.3); }
+.toast.error { border-color: rgba(232,0,26,0.3); }
+.toast.info { border-color: rgba(26,74,232,0.3); }
+
+/* ========== USER ACCOUNT PAGE ========== */
+.account-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.account-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  padding: 28px;
+  position: sticky;
+  top: 84px;
+}
+
+.account-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--red), var(--blue));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.account-name { font-weight: 700; font-size: 18px; margin-bottom: 4px; }
+.account-email { font-size: 13px; color: var(--text-muted); }
+
+.account-status {
+  margin-top: 16px;
+  padding: 10px 16px;
+  border-radius: var(--r);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.status-free { background: rgba(255,255,255,0.05); color: var(--text-dim); border: 1px solid var(--border); }
+.status-premium { background: rgba(255,184,0,0.1); color: var(--premium); border: 1px solid rgba(255,184,0,0.2); }
+
+.account-nav { margin-top: 20px; display: flex; flex-direction: column; gap: 2px; }
+.account-nav-item {
+  padding: 10px 12px;
+  border-radius: var(--r);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dim);
+  transition: var(--transition);
+  border: none;
+  background: none;
+  text-align: left;
+}
+.account-nav-item:hover { background: var(--bg4); color: var(--text); }
+.account-nav-item.active { background: rgba(232,0,26,0.1); color: var(--red); }
+
+.history-list { display: flex; flex-direction: column; gap: 10px; }
+.history-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.history-thumb { width: 40px; height: 40px; background: var(--bg4); border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.history-info { flex: 1; }
+.history-title { font-weight: 700; font-size: 14px; }
+.history-time { font-size: 12px; color: var(--text-muted); }
+.history-action { font-size: 12px; color: var(--text-muted); }
+
+/* ========== FOOTER ========== */
+footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 40px 24px 24px;
+  margin-top: 40px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  margin-bottom: 32px;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 36px;
+  letter-spacing: 4px;
+  background: linear-gradient(135deg, var(--red), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+}
+
+.footer-desc { font-size: 13px; color: var(--text-muted); max-width: 360px; line-height: 1.8; }
+
+.footer-social { display: flex; gap: 10px; flex-wrap: wrap; }
+.footer-social-link {
+  width: 42px; height: 42px;
+  border-radius: var(--r);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.footer-social-link:hover { border-color: var(--red); transform: translateY(-2px); }
+
+.footer-note {
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .profile-layout, .admin-layout, .account-layout { grid-template-columns: 1fr; }
+  .admin-sidebar { display: none; }
+  .profile-card { position: static; }
+  .account-card { position: static; }
+  .footer-top { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .nav-menu { display: none; }
+  .hamburger { display: flex; }
+  .nav-right .btn-outline { display: none; }
+  .nav-right { gap: 6px; }
+  #admin-panel-btn { font-size: 11px; padding: 6px 10px; }
+  .songs-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .search-bar { display: none; }
+  .player-progress { display: none; }
+  .player-vol { display: none; }
+  .hero-actions { flex-direction: column; }
+  .admin-content { padding: 16px; }
+  .stat-card { padding: 16px 10px; }
+  .stat-value { font-size: 28px; }
+}
+
+/* ========== MOBILE NAV ========== */
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 1500;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.mobile-nav.active { display: flex; }
+.mobile-nav a {
+  font-family: var(--font-display);
+  font-size: 40px;
+  letter-spacing: 4px;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.mobile-nav a:hover { color: var(--red); }
+.mobile-nav-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* ========== PILL DIVIDER ========== */
+.pill-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 32px 0;
+  color: var(--text-muted);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.pill-divider::before, .pill-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ========== GLOW DECORATIONS ========== */
+.glow-red {
+  position: absolute;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: var(--red-glow);
+  filter: blur(80px);
+  pointer-events: none;
+}
+.glow-blue {
+  position: absolute;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: var(--blue-glow);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* Spinning loader */
+.spinner {
+  width: 20px; height: 20px;
+  border: 2px solid var(--border);
+  border-top-color: var(--red);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Badge */
+.user-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  text-transform: uppercase;
+}
+
+/* WAVEFORM animation */
+.waveform {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 20px;
+}
+.wave-bar {
+  width: 3px;
+  background: var(--red);
+  border-radius: 2px;
+  animation: wave 1s ease-in-out infinite;
+}
+.wave-bar:nth-child(2) { animation-delay: 0.1s; height: 60%; }
+.wave-bar:nth-child(3) { animation-delay: 0.2s; height: 100%; }
+.wave-bar:nth-child(4) { animation-delay: 0.3s; height: 70%; }
+.wave-bar:nth-child(5) { animation-delay: 0.4s; height: 40%; }
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav id="navbar">
+  <div class="nav-logo" onclick="navigate('home')">VALLUTD</div>
+  <div class="nav-menu">
+    <a onclick="navigate('home')" class="active" id="nav-home">Home</a>
+    <a onclick="navigate('musik')" id="nav-musik">Musik</a>
+    <a onclick="navigate('album')" id="nav-album">Album</a>
+    <a onclick="navigate('profil')" id="nav-profil">Profil Artis</a>
+    <a onclick="navigate('sosmed')" id="nav-sosmed">Media Sosial</a>
+    <a onclick="navigate('akun')" id="nav-akun">Akun</a>
+  </div>
+  <div class="nav-right">
+    <div id="nav-auth-buttons">
+      <button class="btn btn-outline btn-sm" onclick="openModal('login')">Masuk</button>
+      <button class="btn btn-primary btn-sm" onclick="openModal('register')">Daftar</button>
+    </div>
+    <div id="nav-user-info" style="display:none; align-items:center; gap:10px;">
+      <span id="nav-username" style="font-size:14px; color:var(--text-dim);"></span>
+      <span id="nav-user-badge" class="user-badge"></span>
+      <button class="btn btn-ghost btn-sm" onclick="logout()">Keluar</button>
+    </div>
+    <button id="admin-panel-btn" class="btn btn-primary btn-sm" onclick="navigate('admin')" style="display:none;">Panel Admin</button>
+  </div>
+  <button class="hamburger" onclick="openMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+  <a onclick="navigate('home'); closeMobileNav()">HOME</a>
+  <a onclick="navigate('musik'); closeMobileNav()">MUSIK</a>
+  <a onclick="navigate('album'); closeMobileNav()">ALBUM</a>
+  <a onclick="navigate('profil'); closeMobileNav()">PROFIL</a>
+  <a onclick="navigate('sosmed'); closeMobileNav()">MEDIA SOSIAL</a>
+  <a onclick="navigate('akun'); closeMobileNav()">AKUN</a>
+</div>
+
+<!-- ========== TOAST CONTAINER ========== -->
+<div id="toast-container"></div>
+
+<!-- ========== AUTH MODAL ========== -->
+<div class="modal-overlay" id="auth-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-tabs">
+      <button class="modal-tab active" id="tab-login" onclick="switchTab('login')">Masuk</button>
+      <button class="modal-tab" id="tab-register" onclick="switchTab('register')">Daftar</button>
+    </div>
+    
+    <div id="form-login">
+      <h2 class="modal-title">SELAMAT DATANG</h2>
+      <p class="modal-sub">Masuk untuk menikmati fitur lengkap</p>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" id="login-email" placeholder="nama@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-input" id="login-pass" placeholder="Password kamu">
+      </div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;" onclick="doLogin()">Masuk Sekarang</button>
+      <p style="font-size:12px;color:var(--text-muted);text-align:center;margin-top:16px;">Demo: <span style="color:var(--red);">admin@vallutd.com</span> / admin123 (Admin) &nbsp;|&nbsp; <span style="color:var(--blue);">user@email.com</span> / user123 (User) &nbsp;|&nbsp; <span style="color:var(--premium);">premium@email.com</span> / prem123 (Premium)</p>
+    </div>
+    
+    <div id="form-register" style="display:none;">
+      <h2 class="modal-title">BERGABUNG</h2>
+      <p class="modal-sub">Buat akun untuk mulai menikmati musik</p>
+      <div class="form-group">
+        <label class="form-label">Nama</label>
+        <input type="text" class="form-input" id="reg-name" placeholder="Nama kamu">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" id="reg-email" placeholder="nama@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-input" id="reg-pass" placeholder="Minimal 6 karakter">
+      </div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;" onclick="doRegister()">Buat Akun</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== HOME PAGE ========== -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="glow-red" style="top:-100px;right:10%;"></div>
+    <div class="glow-blue" style="bottom:-50px;left:5%;"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        🎵 Musik dari Noval Andika
+      </div>
+      <h1 class="hero-title">
+        <span>NOVAL</span>
+        <span class="red-line">ANDIKA</span>
+        <span style="font-size:0.55em; letter-spacing:8px; opacity:0.6;">VALLUTD</span>
+      </h1>
+      <p class="hero-sub">
+        Konten kreator & penggemar Manchester United. Musik diciptakan dengan visi personal, didukung teknologi AI sebagai alat kreativitas.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="navigate('musik')">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          Dengarkan Musik
+        </button>
+        <button class="btn btn-ghost" onclick="navigate('profil')">
+          Kenali Artis
+        </button>
+        <button class="btn btn-premium" onclick="navigate('akun')" id="hero-premium-btn" style="display:none;">
+          ⭐ Upgrade Premium
+        </button>
+      </div>
+      <div class="hero-note">
+        <strong>Catatan:</strong> Seluruh lagu dan media sosial di website ini di-upload dan dikelola langsung oleh admin (Noval Andika). Teknologi AI digunakan sebagai alat pendukung dalam proses kreatif.
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Songs -->
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">LAGU TERBARU</h2>
+      <button class="btn btn-ghost btn-sm" onclick="navigate('musik')">Lihat Semua →</button>
+    </div>
+    <div id="home-latest-songs">
+      <div class="empty-state">
+        <div class="empty-state-icon">🎵</div>
+        <div class="empty-state-title">BELUM ADA LAGU</div>
+        <p>Admin belum upload lagu. Kunjungi lagi nanti ya!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Latest Albums -->
+  <div class="section" style="padding-top:0;">
+    <div class="section-header">
+      <h2 class="section-title">ALBUM</h2>
+      <button class="btn btn-ghost btn-sm" onclick="navigate('album')">Lihat Semua →</button>
+    </div>
+    <div id="home-albums">
+      <div class="empty-state">
+        <div class="empty-state-icon">💿</div>
+        <div class="empty-state-title">BELUM ADA ALBUM</div>
+        <p>Album akan muncul setelah admin membuatnya.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== MUSIK PAGE ========== -->
+<div class="page" id="page-musik">
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title" id="musik-section-title">SEMUA MUSIK</h2>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:24px;">
+      <div class="filter-bar" style="margin:0;">
+        <button class="filter-btn active" data-filter="all" onclick="filterSongs('all',this)">Semua</button>
+        <button class="filter-btn" data-filter="free" onclick="filterSongs('free',this)">Gratis</button>
+        <button class="filter-btn" data-filter="paid" onclick="filterSongs('paid',this)">Berbayar</button>
+        <button class="filter-btn" data-filter="premium" onclick="filterSongs('premium',this)">Premium</button>
+      </div>
+      <div class="search-bar" style="margin-left:auto;">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" placeholder="Cari lagu..." id="song-search" oninput="searchSongs()">
+      </div>
+    </div>
+    <div class="songs-grid" id="musik-songs-grid">
+      <div class="empty-state" style="grid-column:1/-1;">
+        <div class="empty-state-icon">🎵</div>
+        <div class="empty-state-title">BELUM ADA LAGU</div>
+        <p>Admin belum upload lagu apapun. Pantau terus ya!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== ALBUM PAGE ========== -->
+<div class="page" id="page-album">
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">SEMUA ALBUM</h2>
+    </div>
+    <div class="album-grid" id="album-grid">
+      <div class="empty-state" style="grid-column:1/-1;">
+        <div class="empty-state-icon">💿</div>
+        <div class="empty-state-title">BELUM ADA ALBUM</div>
+        <p>Admin belum membuat album apapun.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PROFIL ARTIS PAGE ========== -->
+<div class="page" id="page-profil">
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">PROFIL ARTIS</h2>
+    </div>
+    <div class="profile-layout">
+      <div>
+        <div class="profile-card">
+          <div class="profile-avatar">VA</div>
+          <div class="profile-name">VALLUTD</div>
+          <div class="profile-handle">@novalandika</div>
+          <div class="profile-tags">
+            <span class="tag">🎵 Musisi</span>
+            <span class="tag">🔴 Manchester United</span>
+            <span class="tag">📱 Content Creator</span>
+            <span class="tag">🤖 AI Music</span>
+            <span class="tag">⚽ UNA Founder</span>
+          </div>
+        </div>
+        <div style="margin-top:20px;" id="profile-social-links"></div>
+      </div>
+      <div class="profile-content">
+        <h2>TENTANG NOVAL ANDIKA</h2>
+        <p class="prose">
+          Noval Andika, yang dikenal luas dengan nama kreatif <strong>Vallutd</strong>, adalah seorang konten kreator muda yang memiliki semangat tinggi terhadap dunia kreatif digital. Sebagai seorang penggemar setia Manchester United, identitas merahnya tidak hanya tercermin dalam warna kesukaan, tetapi juga dalam semangat juang yang ia bawa ke setiap karya.
+          <br><br>
+          Noval juga merupakan pendiri komunitas penggemar bernama <strong>UNA (United New Era)</strong> — sebuah komunitas yang lahir dari cinta terhadap sepak bola dan Manchester United, mempertemukan sesama penggemar dalam satu ruang yang hangat dan penuh semangat.
+        </p>
+
+        <h2>MUSIK & EKSPLORASI KREATIF</h2>
+        <p class="prose">
+          Website ini hadir sebagai ruang eksplorasi dan publikasi karya musik yang diciptakan oleh Noval Andika. Setiap lagu merupakan hasil dari proses kreatif yang panjang — mulai dari ide awal, konsep, lirik, hingga arah musikal yang sepenuhnya berasal dari visi personal sang artis.
+        </p>
+
+        <div class="ai-card">
+          <div class="ai-card-title">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            🤖 Tentang AI dalam Musik
+          </div>
+          <p>
+            Teknologi AI digunakan sebagai <strong>alat pendukung kreativitas</strong> — bukan sebagai pencipta utama. AI membantu dalam proses produksi dan eksplorasi suara, sementara <strong>ide, arah, emosi, dan visi</strong> tetap sepenuhnya berasal dari Noval Andika sendiri. Ini adalah kolaborasi antara manusia dan teknologi, bukan penggantian kreativitas manusiawi.
+          </p>
+        </div>
+
+        <h2>VISI & PERJALANAN</h2>
+        <p class="prose">
+          Visi Noval adalah membuktikan bahwa kreativitas tidak mengenal batasan alat. Dengan semangat eksplorasi, ia terus berkembang, bereksperimen, dan menerbitkan karya-karya yang diharapkan bisa menyentuh pendengar dari berbagai latar belakang. Website ini adalah langkah awal dari sebuah perjalanan panjang dalam dunia musik digital.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== MEDIA SOSIAL PAGE ========== -->
+<div class="page" id="page-sosmed">
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">MEDIA SOSIAL</h2>
+    </div>
+    <p style="color:var(--text-dim);margin-bottom:32px;font-size:15px;">Temukan Noval Andika di berbagai platform media sosial di bawah ini.</p>
+    <div class="social-grid" id="social-grid">
+      <div class="empty-state" style="grid-column:1/-1;">
+        <div class="empty-state-icon">📱</div>
+        <div class="empty-state-title">BELUM ADA MEDIA SOSIAL</div>
+        <p>Admin belum menambahkan link media sosial apapun.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== AKUN PAGE ========== -->
+<div class="page" id="page-akun">
+  <div class="section">
+    <div id="akun-not-logged">
+      <div class="empty-state">
+        <div class="empty-state-icon">🔐</div>
+        <div class="empty-state-title">BELUM MASUK</div>
+        <p>Silakan masuk atau daftar untuk mengakses halaman akun.</p>
+        <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="openModal('login')">Masuk</button>
+          <button class="btn btn-outline" onclick="openModal('register')">Daftar</button>
+        </div>
+      </div>
+    </div>
+    <div id="akun-logged" style="display:none;">
+      <div class="section-header">
+        <h2 class="section-title">AKUN SAYA</h2>
+      </div>
+      <div class="account-layout">
+        <div>
+          <div class="account-card">
+            <div class="account-avatar" id="acct-avatar">U</div>
+            <div class="account-name" id="acct-name">User</div>
+            <div class="account-email" id="acct-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b6c3c5d3c4f6d3dbd7dfda98d5d9db">[email&#160;protected]</a></div>
+            <div class="account-status" id="acct-status"></div>
+            <div class="account-nav">
+              <button class="account-nav-item active" onclick="switchAccountTab('riwayat-play')">🎵 Riwayat Putar</button>
+              <button class="account-nav-item" onclick="switchAccountTab('riwayat-beli')">🛒 Riwayat Beli</button>
+              <button class="account-nav-item" id="acct-nav-download" style="display:none;" onclick="switchAccountTab('riwayat-download')">⬇️ Riwayat Download</button>
+              <button class="account-nav-item" onclick="switchAccountTab('upgrade')">⭐ Upgrade Premium</button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div id="akun-riwayat-play" class="admin-section active">
+            <div class="admin-card">
+              <div class="admin-card-title">🎵 Riwayat Putar</div>
+              <div id="play-history-list">
+                <div class="empty-state" style="padding:40px 0;">
+                  <p>Belum ada riwayat pemutaran.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="akun-riwayat-beli" class="admin-section">
+            <div class="admin-card">
+              <div class="admin-card-title">🛒 Riwayat Pembelian</div>
+              <div id="buy-history-list">
+                <div class="empty-state" style="padding:40px 0;"><p>Belum ada riwayat pembelian.</p></div>
+              </div>
+            </div>
+          </div>
+          <div id="akun-riwayat-download" class="admin-section">
+            <div class="admin-card">
+              <div class="admin-card-title">⬇️ Riwayat Download</div>
+              <div id="dl-history-list">
+                <div class="empty-state" style="padding:40px 0;"><p>Belum ada riwayat download.</p></div>
+              </div>
+            </div>
+          </div>
+          <div id="akun-upgrade" class="admin-section">
+            <div class="admin-card">
+              <div class="admin-card-title">⭐ Upgrade Premium</div>
+              <p style="color:var(--text-dim);margin-bottom:24px;">Nikmati akses penuh: streaming semua lagu + download.</p>
+              <div style="background:linear-gradient(135deg,rgba(255,184,0,0.1),rgba(255,100,0,0.1));border:1px solid rgba(255,184,0,0.2);border-radius:var(--r2);padding:28px;text-align:center;">
+                <div style="font-family:var(--font-display);font-size:48px;color:var(--premium);letter-spacing:2px;">PREMIUM</div>
+                <div style="font-size:32px;font-weight:700;margin:12px 0;">Rp 29.000<span style="font-size:14px;color:var(--text-muted);font-weight:400;">/bulan</span></div>
+                <ul style="list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:8px;">
+                  <li style="color:var(--text-dim);font-size:14px;">✅ Streaming semua lagu tanpa batas</li>
+                  <li style="color:var(--text-dim);font-size:14px;">✅ Download lagu (khusus premium)</li>
+                  <li style="color:var(--text-dim);font-size:14px;">✅ Riwayat download</li>
+                  <li style="color:var(--text-dim);font-size:14px;">✅ Akses awal lagu baru</li>
+                </ul>
+                <button class="btn btn-premium" onclick="toast('Fitur pembayaran akan segera hadir!','info')">Berlangganan Sekarang</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== ADMIN PAGE ========== -->
+<div class="page" id="page-admin">
+  <div class="admin-layout">
+    <div class="admin-sidebar">
+      <div class="admin-sidebar-title">ADMIN PANEL</div>
+      <button class="admin-nav-item active" onclick="switchAdmin('dashboard')">📊 Dashboard</button>
+      <button class="admin-nav-item" onclick="switchAdmin('upload-lagu')">🎵 Upload Lagu</button>
+      <button class="admin-nav-item" onclick="switchAdmin('kelola-lagu')">📋 Kelola Lagu</button>
+      <button class="admin-nav-item" onclick="switchAdmin('album')">💿 Album</button>
+      <button class="admin-nav-item" onclick="switchAdmin('sosmed')">📱 Media Sosial</button>
+      <button class="admin-nav-item" onclick="switchAdmin('users')">👥 Pengguna</button>
+      <div style="margin-top:auto;padding-top:20px;border-top:1px solid var(--border);margin-top:40px;">
+        <button class="admin-nav-item" onclick="navigate('home')" style="color:var(--text-muted);">← Kembali ke Website</button>
+      </div>
+    </div>
+    <div class="admin-content">
+      
+      <!-- DASHBOARD -->
+      <div class="admin-section active" id="admin-dashboard">
+        <div style="font-family:var(--font-display);font-size:36px;letter-spacing:3px;margin-bottom:24px;">DASHBOARD</div>
+        <div class="stat-grid" id="admin-stats">
+          <div class="stat-card"><div class="stat-value" id="stat-songs">0</div><div class="stat-label">Total Lagu</div></div>
+          <div class="stat-card"><div class="stat-value" id="stat-albums">0</div><div class="stat-label">Total Album</div></div>
+          <div class="stat-card"><div class="stat-value" id="stat-users">0</div><div class="stat-label">Total User</div></div>
+          <div class="stat-card"><div class="stat-value" id="stat-plays">0</div><div class="stat-label">Total Putar</div></div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card-title">📋 Aktivitas Terbaru</div>
+          <div id="admin-activity">
+            <p style="color:var(--text-muted);font-size:14px;">Belum ada aktivitas.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- UPLOAD LAGU -->
+      <div class="admin-section" id="admin-upload-lagu">
+        <div style="font-family:var(--font-display);font-size:36px;letter-spacing:3px;margin-bottom:24px;">UPLOAD LAGU</div>
+        <div class="admin-card">
+          <div class="form-group">
+            <label class="form-label">Judul Lagu *</label>
+            <input type="text" class="form-input" id="upload-title" placeholder="Masukkan judul lagu">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Deskripsi</label>
+            <textarea class="form-input" id="upload-desc" rows="3" placeholder="Deskripsi lagu (opsional)" style="resize:vertical;"></textarea>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-group">
+              <label class="form-label">Status *</label>
+              <select class="form-input" id="upload-status">
+                <option value="free">Gratis</option>
+                <option value="paid">Berbayar</option>
+                <option value="premium">Premium</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Harga (Rp)</label>
+              <input type="number" class="form-input" id="upload-price" placeholder="0 jika gratis">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Album (opsional)</label>
+            <select class="form-input" id="upload-album">
+              <option value="">— Tidak dalam album —</option>
+            </select>
+          </div>
+          <div class="pill-divider">File Upload</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-group">
+              <label class="form-label">File Lagu (MP3/WAV) *</label>
+              <div class="upload-area" onclick="document.getElementById('file-audio').click()">
+                <div class="upload-icon">🎵</div>
+                <div class="upload-text" id="audio-filename">Klik untuk pilih file audio</div>
+                <div class="upload-sub">MP3, WAV — maks. 50MB</div>
+              </div>
+              <input type="file" id="file-audio" accept=".mp3,.wav" style="display:none" onchange="handleFileSelect(this,'audio-filename','🎵')">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Cover Lagu (JPG/PNG) *</label>
+              <div class="upload-area" onclick="document.getElementById('file-cover').click()">
+                <div class="upload-icon">🖼️</div>
+                <div class="upload-text" id="cover-filename">Klik untuk pilih gambar cover</div>
+                <div class="upload-sub">JPG, PNG — maks. 5MB</div>
+              </div>
+              <input type="file" id="file-cover" accept=".jpg,.jpeg,.png" style="display:none" onchange="handleFileSelect(this,'cover-filename','🖼️')">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">File Preview (untuk lagu berbayar — 30–60 detik)</label>
+            <div class="upload-area" onclick="document.getElementById('file-preview').click()">
+              <div class="upload-icon">🔊</div>
+              <div class="upload-text" id="preview-filename">Klik untuk pilih file preview</div>
+              <div class="upload-sub">MP3 — 30 s/d 60 detik</div>
+            </div>
+            <input type="file" id="file-preview" accept=".mp3" style="display:none" onchange="handleFileSelect(this,'preview-filename','🔊')">
+          </div>
+          <div style="display:flex;gap:12px;margin-top:8px;">
+            <button class="btn btn-primary" onclick="uploadSong()">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+              Upload Lagu
+            </button>
+            <button class="btn btn-ghost" onclick="resetUploadForm()">Reset Form</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- KELOLA LAGU -->
+      <div class="admin-section" id="admin-kelola-lagu">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+          <div style="font-family:var(--font-display);font-size:36px;letter-spacing:3px;">KELOLA LAGU</div>
+          <button class="btn btn-primary btn-sm" onclick="switchAdmin('upload-lagu')">+ Upload Baru</button>
+        </div>
+        <div class="admin-card">
+          <div id="song-list-admin">
+            <div class="empty-state" style="padding:40px 0;">
+              <div class="empty-state-icon">🎵</div>
+              <p>Belum ada lagu. Upload lagu terlebih dahulu.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ALBUM ADMIN -->
+      <div class="admin-section" id="admin-album">
+        <div style="font-family:var(--font-display);font-size:36px;letter-spacing:3px;margin-bottom:24px;">KELOLA ALBUM</div>
+        <div class="admin-card" style="margin-bottom:20px;">
+          <div class="admin-card-title">Buat Album Baru</div>
+          <div class="form-group">
+            <label class="form-label">Nama Album *</label>
+            <input type="text" class="form-input" id="album-name" placeholder="Nama album">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Deskripsi Album</label>
+            <textarea class="form-input" id="album-desc" rows="2" placeholder="Deskripsi opsional" style="resize:vertical;"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Cover Album</label>
+            <div class="upload-area" onclick="document.getElementById('file-album-cover').click()">
+              <div class="upload-icon">💿</div>
+              <div class="upload-text" id="album-cover-filename">Klik untuk pilih cover album</div>
+            </div>
+            <input type="file" id="file-album-cover" accept=".jpg,.jpeg,.png" style="display:none" onchange="handleFileSelect(this,'album-cover-filename','💿')">
+          </div>
+          <button class="btn btn-primary" onclick="createAlbum()">Buat Album</button>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card-title">Daftar Album</div>
+          <div id="album-list-admin">
+            <div class="empty-state" style="padding:40px 0;"><p>Belum ada album.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOSMED ADMIN -->
+      <div class="admin-section" id="admin-sosmed">
+        <div style="font-family:var(--font-display);font-size:36px;letter-spacing:3px;margin-bottom:24px;">MEDIA SOSIAL</div>
+        <div class="admin-card" style="margin-bottom:20px;">
+          <div class="admin-card-title">Tambah Media Sosial</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-group">
+              <label class="form-label">Platform</label>
+              <select class="form-input" id="sosmed-platform">
+                <option value="instagram">Instagram</option>
+                <option value="tiktok">TikTok</option>
+                <option value="youtube">YouTube</option>
+                <option value="twitter">Twitter / X</option>
+                <option value="facebook">Facebook</option>
+                <option value="spotify">Spotify</option>
+                <option value="soundcloud">SoundCloud</option>
+                <option value="other">Lainnya</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Label Tampilan</label>
+              <input type="text" class="form-input" id="sosmed-label" placeholder="cth: @vallutd">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">URL *</label>
+            <input type="url" class="form-input" id="sosmed-url" placeholder="https://...">
+          </div>
+          <button class="btn btn-primary" onclick="addSocialMedia()">Tambah</button>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card-title">Daftar Media Sosial</div>
+          <div id="sosmed-list-admin">
+            <div class="empty-state" style="padding:40px 0;"><p>Belum ada media sosial.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- USERS ADMIN -->
+      <div class="admin-section" id="admin-users">
+        <div style="font-family:var(--font-display);font-size:36px;letter-spacing:3px;margin-bottom:24px;">PENGGUNA</div>
+        <div class="admin-card">
+          <table class="data-table" id="users-table">
+            <thead>
+              <tr>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Bergabung</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="users-tbody">
+              <tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:40px;">Belum ada pengguna terdaftar.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== MINI PLAYER ========== -->
+<div id="mini-player">
+  <div class="player-thumb" id="player-thumb">🎵</div>
+  <div class="player-info">
+    <div class="player-title" id="player-title">—</div>
+    <div class="player-artist">Vallutd · Noval Andika</div>
+  </div>
+  <div class="player-controls">
+    <button class="ctrl-btn" onclick="prevSong()" title="Sebelumnya">
+      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+    </button>
+    <button class="ctrl-btn play-pause" id="play-pause-btn" onclick="togglePlay()">
+      <svg id="play-icon" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <svg id="pause-icon" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+    <button class="ctrl-btn" onclick="nextSong()" title="Berikutnya">
+      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+    </button>
+  </div>
+  <div class="player-progress">
+    <div class="progress-bar" onclick="seekProgress(event)">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="progress-time">
+      <span id="time-current">0:00</span>
+      <span id="time-total">0:00</span>
+    </div>
+  </div>
+  <div class="player-vol">
+    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+    <input type="range" class="vol-slider" id="vol-slider" min="0" max="100" value="80" oninput="setVolume(this.value)">
+  </div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer id="main-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">VALLUTD</div>
+        <p class="footer-desc">Musik dari Noval Andika — konten kreator, penggemar Manchester United, dan pendiri komunitas UNA (United New Era). Dibuat dengan kreativitas dan teknologi AI.</p>
+        <p style="font-size:11px;color:var(--text-muted);margin-top:12px;line-height:1.8;">Seluruh lagu dan media sosial di website ini di-upload dan dikelola langsung oleh admin (Noval Andika). Teknologi AI digunakan sebagai alat pendukung dalam proses kreatif.</p>
+      </div>
+      <div>
+        <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Ikuti Kami</p>
+        <div class="footer-social" id="footer-social-links">
+          <span style="font-size:12px;color:var(--text-muted);">—</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">
+      <span>© 2025 Noval Andika (Vallutd). Semua hak dilindungi.</span>
+      <span>🔴 UNA (United New Era) — Manchester United Fan Community</span>
+    </div>
+  </div>
+</footer>
+
+<!-- AUDIO ELEMENT -->
+<audio id="audio-player"></audio>
+
+<!-- ===== FIREBASE SDK ===== -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, collection, doc, addDoc, getDocs, getDoc, setDoc, deleteDoc, updateDoc, onSnapshot, increment, query, orderBy, where } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+// ============================================================
+// 🔥 FIREBASE CONFIG — GANTI DENGAN MILIKMU!
+// Cara dapat config: console.firebase.google.com
+// → Project Settings → Your Apps → Web App → SDK setup
+// ============================================================
+const firebaseConfig = {
+  apiKey:            "AIzaSyDgHnWRNoRkRwUFb-5RH6i82ukuYeX9d2g",
+  authDomain:        "vallutd-music.firebaseapp.com",
+  projectId:         "vallutd-music",
+  storageBucket:     "vallutd-music.firebasestorage.app",
+  messagingSenderId: "869857873538",
+  appId:             "1:869857873538:web:e76a16dbc1cd896ff2ee9b",
+  measurementId:     "G-VEPCTSMTBC"
+};
+
+const app     = initializeApp(firebaseConfig);
+const auth    = getAuth(app);
+const db      = getFirestore(app);
+const storage = getStorage(app);
+
+// ============================================================
+// STATE
+// ============================================================
+let songs         = [];
+let albums        = [];
+let socials       = [];
+let playHistory   = [];
+let buyHistory    = [];
+let globalStats   = { plays: 0 };
+let currentUser   = null;
+let currentPage   = 'home';
+let currentSongIndex = -1;
+let songQueue     = [];
+let isPlaying     = false;
+let currentFilter = 'all';
+
+const audio = document.getElementById('audio-player');
+
+// ============================================================
+// LOADING STATE
+// ============================================================
+function showLoading(msg = 'Memuat...') {
+  let el = document.getElementById('global-loading');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'global-loading';
+    el.style.cssText = 'position:fixed;inset:0;background:rgba(8,8,16,0.85);z-index:9000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;';
+    el.innerHTML = `<div class="spinner" style="width:40px;height:40px;border-width:3px;"></div><div style="font-family:var(--font-display);font-size:20px;letter-spacing:3px;color:var(--text-dim);">${msg}</div>`;
+    document.body.appendChild(el);
+  } else {
+    el.querySelector('div:last-child').textContent = msg;
+    el.style.display = 'flex';
+  }
+}
+function hideLoading() {
+  const el = document.getElementById('global-loading');
+  if (el) el.style.display = 'none';
+}
+
+// ============================================================
+// SAVE (tidak dipakai lagi — Firebase realtime)
+// ============================================================
+function save() { /* Data disimpan langsung ke Firebase */ }
+
+// ============================================================
+// LOAD DATA FROM FIRESTORE
+// ============================================================
+async function loadSongs() {
+  const snap = await getDocs(query(collection(db, 'songs'), orderBy('uploadedAt', 'desc')));
+  songs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+}
+
+async function loadAlbums() {
+  const snap = await getDocs(query(collection(db, 'albums'), orderBy('created', 'desc')));
+  albums = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+}
+
+async function loadSocials() {
+  const snap = await getDocs(collection(db, 'socials'));
+  socials = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+}
+
+async function loadStats() {
+  const snap = await getDoc(doc(db, 'meta', 'stats'));
+  if (snap.exists()) globalStats = snap.data();
+  else await setDoc(doc(db, 'meta', 'stats'), { plays: 0 });
+}
+
+async function loadUserHistories() {
+  if (!currentUser) return;
+  const pSnap = await getDocs(query(collection(db, 'playHistory'), where('userId','==',currentUser.uid)));
+  playHistory = pSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+  const bSnap = await getDocs(query(collection(db, 'buyHistory'), where('userId','==',currentUser.uid)));
+  buyHistory = bSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+}
+
+async function loadAllData() {
+  showLoading('Memuat data...');
+  await Promise.all([loadSongs(), loadAlbums(), loadSocials(), loadStats()]);
+  hideLoading();
+}
+
+// ============================================================
+// AUTH STATE LISTENER
+// ============================================================
+onAuthStateChanged(auth, async (fbUser) => {
+  if (fbUser) {
+    // Ambil role dari Firestore
+    const userDoc = await getDoc(doc(db, 'users', fbUser.uid));
+    if (userDoc.exists()) {
+      currentUser = { uid: fbUser.uid, email: fbUser.email, ...userDoc.data() };
+    } else {
+      // User baru — simpan ke Firestore
+      const newUser = { name: fbUser.displayName || fbUser.email.split('@')[0], email: fbUser.email, role: 'user', joined: new Date().toISOString() };
+      await setDoc(doc(db, 'users', fbUser.uid), newUser);
+      currentUser = { uid: fbUser.uid, ...newUser };
+    }
+    await loadUserHistories();
+  } else {
+    currentUser = null;
+    playHistory = [];
+    buyHistory = [];
+  }
+  updateNavAuth();
+  renderPage(currentPage);
+});
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
+  const el  = document.getElementById('page-' + page);
+  const nav = document.getElementById('nav-' + page);
+  if (el)  el.classList.add('active');
+  if (nav) nav.classList.add('active');
+  currentPage = page;
+  document.getElementById('main-footer').style.display = page === 'admin' ? 'none' : 'block';
+  if (page === 'admin' && (!currentUser || currentUser.role !== 'admin')) {
+    navigate('home');
+    toast('Akses ditolak. Login sebagai admin terlebih dahulu.', 'error');
+    return;
+  }
+  renderPage(page);
+  window.scrollTo(0, 0);
+}
+
+function renderPage(page) {
+  switch(page) {
+    case 'home':   renderHome();   break;
+    case 'musik':  renderMusik();  break;
+    case 'album':  renderAlbum();  break;
+    case 'sosmed': renderSosmed(); break;
+    case 'profil': renderProfil(); break;
+    case 'akun':   renderAkun();   break;
+    case 'admin':  renderAdmin();  break;
+  }
+}
+
+// ============================================================
+// AUTH
+// ============================================================
+function openModal(tab = 'login') {
+  document.getElementById('auth-modal').classList.add('active');
+  switchTab(tab);
+}
+function closeModal() {
+  document.getElementById('auth-modal').classList.remove('active');
+}
+function switchTab(tab) {
+  document.getElementById('form-login').style.display    = tab === 'login'    ? 'block' : 'none';
+  document.getElementById('form-register').style.display = tab === 'register' ? 'block' : 'none';
+  document.getElementById('tab-login').classList.toggle('active',    tab === 'login');
+  document.getElementById('tab-register').classList.toggle('active', tab === 'register');
+}
+
+async function doLogin() {
+  const email = document.getElementById('login-email').value.trim();
+  const pass  = document.getElementById('login-pass').value;
+  if (!email || !pass) { toast('Email dan password wajib diisi!', 'error'); return; }
+  showLoading('Masuk...');
+  try {
+    await signInWithEmailAndPassword(auth, email, pass);
+    closeModal();
+    toast('Selamat datang kembali! 👋', 'success');
+  } catch(e) {
+    toast('Email atau password salah!', 'error');
+  }
+  hideLoading();
+}
+
+async function doRegister() {
+  const name  = document.getElementById('reg-name').value.trim();
+  const email = document.getElementById('reg-email').value.trim();
+  const pass  = document.getElementById('reg-pass').value;
+  if (!name || !email || !pass) { toast('Semua field wajib diisi!', 'error'); return; }
+  if (pass.length < 6) { toast('Password minimal 6 karakter!', 'error'); return; }
+  showLoading('Membuat akun...');
+  try {
+    const cred = await createUserWithEmailAndPassword(auth, email, pass);
+    await setDoc(doc(db, 'users', cred.user.uid), { name, email, role: 'user', joined: new Date().toISOString() });
+    closeModal();
+    toast(`Akun berhasil dibuat! Selamat datang, ${name}! 🎉`, 'success');
+  } catch(e) {
+    if (e.code === 'auth/email-already-in-use') toast('Email sudah terdaftar!', 'error');
+    else toast('Gagal membuat akun. Coba lagi.', 'error');
+  }
+  hideLoading();
+}
+
+async function logout() {
+  await signOut(auth);
+  toast('Kamu telah keluar.', 'info');
+  navigate('home');
+}
+
+function updateNavAuth() {
+  const authBtns    = document.getElementById('nav-auth-buttons');
+  const userInfo    = document.getElementById('nav-user-info');
+  const adminBtn    = document.getElementById('admin-panel-btn');
+  const heroPremBtn = document.getElementById('hero-premium-btn');
+  if (currentUser) {
+    authBtns.style.display = 'none';
+    userInfo.style.display = 'flex';
+    document.getElementById('nav-username').textContent = currentUser.name;
+    const badge = document.getElementById('nav-user-badge');
+    if (currentUser.role === 'admin') {
+      badge.textContent = 'ADMIN';
+      badge.style.cssText = 'background:rgba(232,0,26,0.15);color:var(--red);border:1px solid rgba(232,0,26,0.3);';
+      adminBtn.style.display = 'flex';
+    } else if (currentUser.role === 'premium') {
+      badge.textContent = '⭐ PREMIUM';
+      badge.style.cssText = 'background:rgba(255,184,0,0.15);color:var(--premium);border:1px solid rgba(255,184,0,0.3);';
+      adminBtn.style.display = 'none';
+      if (heroPremBtn) heroPremBtn.style.display = 'none';
+    } else {
+      badge.textContent = 'FREE';
+      badge.style.cssText = 'background:rgba(255,255,255,0.05);color:var(--text-muted);border:1px solid var(--border);';
+      adminBtn.style.display = 'none';
+      if (heroPremBtn) heroPremBtn.style.display = 'flex';
+    }
+  } else {
+    authBtns.style.display = 'flex';
+    userInfo.style.display = 'none';
+    adminBtn.style.display = 'none';
+    if (heroPremBtn) heroPremBtn.style.display = 'flex';
+  }
+}
+
+// ============================================================
+// RENDER FUNCTIONS
+// ============================================================
+function renderHome() {
+  const latestContainer = document.getElementById('home-latest-songs');
+  const albumsContainer = document.getElementById('home-albums');
+  const latest = songs.slice(0, 4);
+  if (latest.length > 0) {
+    latestContainer.innerHTML = `<div class="songs-grid">${latest.map(s => songCardHTML(s)).join('')}</div>`;
+  } else {
+    latestContainer.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🎵</div><div class="empty-state-title">BELUM ADA LAGU</div><p>Admin belum upload lagu. Kunjungi lagi nanti!</p></div>`;
+  }
+  if (albums.length > 0) {
+    albumsContainer.innerHTML = `<div class="album-grid">${albums.slice(0,4).map(a => albumCardHTML(a)).join('')}</div>`;
+  } else {
+    albumsContainer.innerHTML = `<div class="empty-state"><div class="empty-state-icon">💿</div><div class="empty-state-title">BELUM ADA ALBUM</div><p>Album akan muncul setelah admin membuatnya.</p></div>`;
+  }
+}
+
+function renderMusik() {
+  const titleEl = document.getElementById('musik-section-title');
+  if (titleEl) titleEl.textContent = 'SEMUA MUSIK';
+  renderSongsGrid();
+}
+
+function renderSongsGrid() {
+  const grid   = document.getElementById('musik-songs-grid');
+  const search = (document.getElementById('song-search')?.value || '').toLowerCase();
+  let filtered = songs.filter(s => {
+    const matchFilter = currentFilter === 'all' || s.status === currentFilter;
+    const matchSearch = !search || s.title.toLowerCase().includes(search) || (s.desc||'').toLowerCase().includes(search);
+    return matchFilter && matchSearch;
+  });
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><div class="empty-state-icon">🎵</div><div class="empty-state-title">TIDAK ADA LAGU</div><p>Tidak ada lagu yang sesuai pencarian.</p></div>`;
+  } else {
+    grid.innerHTML = filtered.map(s => songCardHTML(s)).join('');
+  }
+}
+
+function songCardHTML(song) {
+  const badgeMap = { free:'badge-free', paid:'badge-paid', premium:'badge-premium' };
+  const labelMap = { free:'Gratis', paid:'Berbayar', premium:'Premium' };
+  const priceMap = { free:'Gratis', paid:`Rp ${Number(song.price||0).toLocaleString('id')}`, premium:'Premium' };
+  const priceClass = { free:'free', paid:'', premium:'premium' };
+  const coverHTML = song.coverURL
+    ? `<img src="${song.coverURL}" alt="${song.title}" loading="lazy">`
+    : `<div class="song-cover-placeholder"><div class="song-cover-icon">🎵</div></div>`;
+  return `<div class="song-card" onclick="playSong('${song.id}')">
+    <div class="song-cover">${coverHTML}
+      <div class="song-cover-overlay"><div class="play-btn-large">
+        <svg width="22" height="22" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div></div>
+    </div>
+    <div class="song-info">
+      <span class="song-type-badge ${badgeMap[song.status]}">${labelMap[song.status]}</span>
+      <div class="song-title">${song.title}</div>
+      ${song.desc ? `<div style="font-size:12px;color:var(--text-muted);margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${song.desc}</div>` : ''}
+      <div class="song-meta">
+        <span style="font-size:12px;">Vallutd</span>
+        <span class="song-price ${priceClass[song.status]}">${priceMap[song.status]}</span>
+      </div>
+    </div>
+  </div>`;
+}
+
+function albumCardHTML(album) {
+  const albumSongs = songs.filter(s => s.albumId === album.id);
+  const coverHTML  = album.coverURL ? `<img src="${album.coverURL}" alt="${album.name}">` : `💿`;
+  return `<div class="album-card" onclick="openAlbum('${album.id}')">
+    <div class="album-cover">${coverHTML}</div>
+    <div class="album-info">
+      <div class="album-title">${album.name}</div>
+      <div class="album-meta">${albumSongs.length} lagu • ${new Date(album.created).getFullYear()}</div>
+      ${album.desc ? `<div style="font-size:12px;color:var(--text-muted);margin-top:4px;">${album.desc}</div>` : ''}
+    </div>
+  </div>`;
+}
+
+function renderAlbum() {
+  const grid = document.getElementById('album-grid');
+  if (albums.length === 0) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><div class="empty-state-icon">💿</div><div class="empty-state-title">BELUM ADA ALBUM</div><p>Admin belum membuat album apapun.</p></div>`;
+  } else {
+    grid.innerHTML = albums.map(a => albumCardHTML(a)).join('');
+  }
+}
+
+function renderSosmed() {
+  const grid = document.getElementById('social-grid');
+  if (socials.length === 0) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><div class="empty-state-icon">📱</div><div class="empty-state-title">BELUM ADA MEDIA SOSIAL</div><p>Admin belum menambahkan link media sosial.</p></div>`;
+  } else {
+    grid.innerHTML = socials.map(s => socialCardHTML(s)).join('');
+  }
+  renderFooterSocials();
+  renderProfileSocials();
+}
+
+const socialIcons  = { instagram:'📸', tiktok:'🎵', youtube:'▶️', twitter:'🐦', facebook:'📘', spotify:'🟢', soundcloud:'🔶', other:'🔗' };
+const socialColors = { instagram:'linear-gradient(135deg,#E1306C,#833AB4)', tiktok:'linear-gradient(135deg,#010101,#69C9D0)', youtube:'linear-gradient(135deg,#FF0000,#CC0000)', twitter:'linear-gradient(135deg,#1DA1F2,#0d8fd9)', facebook:'linear-gradient(135deg,#1877F2,#0a5dc9)', spotify:'linear-gradient(135deg,#1DB954,#148040)', soundcloud:'linear-gradient(135deg,#FF5500,#CC3300)', other:'linear-gradient(135deg,var(--red),var(--blue))' };
+
+function socialCardHTML(s) {
+  return `<a class="social-card" href="${s.url}" target="_blank" rel="noopener">
+    <div class="social-icon" style="background:${socialColors[s.platform]||socialColors.other}">${socialIcons[s.platform]||'🔗'}</div>
+    <div class="social-info"><div class="social-platform">${s.platform}</div><div class="social-handle">${s.label || s.url}</div></div>
+    <div class="social-arrow">→</div>
+  </a>`;
+}
+
+function renderProfil() { renderProfileSocials(); }
+
+function renderProfileSocials() {
+  const cont = document.getElementById('profile-social-links');
+  if (!cont) return;
+  if (socials.length === 0) { cont.innerHTML = ''; return; }
+  cont.innerHTML = `<div class="admin-card" style="margin-top:0;">
+    <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Media Sosial</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      ${socials.map(s => `<a href="${s.url}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text-dim);font-size:14px;padding:8px;border-radius:var(--r);transition:var(--transition);" onmouseover="this.style.background='var(--bg4)'" onmouseout="this.style.background='none'">
+        <span style="font-size:20px;">${socialIcons[s.platform]||'🔗'}</span>
+        <span>${s.label || s.url}</span>
+      </a>`).join('')}
+    </div>
+  </div>`;
+}
+
+function renderFooterSocials() {
+  const cont = document.getElementById('footer-social-links');
+  if (socials.length === 0) { cont.innerHTML = '<span style="font-size:12px;color:var(--text-muted);">—</span>'; return; }
+  cont.innerHTML = socials.map(s => `<a class="footer-social-link" href="${s.url}" target="_blank" rel="noopener" title="${s.platform}">${socialIcons[s.platform]||'🔗'}</a>`).join('');
+}
+
+function renderAkun() {
+  const notLogged = document.getElementById('akun-not-logged');
+  const logged    = document.getElementById('akun-logged');
+  if (!currentUser) { notLogged.style.display = 'block'; logged.style.display = 'none'; return; }
+  notLogged.style.display = 'none';
+  logged.style.display = 'block';
+  document.getElementById('acct-avatar').textContent = currentUser.name.charAt(0).toUpperCase();
+  document.getElementById('acct-name').textContent   = currentUser.name;
+  document.getElementById('acct-email').textContent  = currentUser.email;
+  const statusEl = document.getElementById('acct-status');
+  if (currentUser.role === 'admin') {
+    statusEl.textContent = '🔴 Admin'; statusEl.className = 'account-status';
+    statusEl.style.background = 'rgba(232,0,26,0.1)'; statusEl.style.color = 'var(--red)'; statusEl.style.border = '1px solid rgba(232,0,26,0.2)';
+  } else if (currentUser.role === 'premium') {
+    statusEl.textContent = '⭐ Premium'; statusEl.className = 'account-status status-premium'; statusEl.style = '';
+    document.getElementById('acct-nav-download').style.display = 'block';
+  } else {
+    statusEl.textContent = 'Akun Gratis'; statusEl.className = 'account-status status-free'; statusEl.style = '';
+  }
+  renderHistoryList('play-history-list', playHistory, '🎵');
+  renderHistoryList('buy-history-list',  buyHistory,  '🛒');
+}
+
+function renderHistoryList(containerId, list, icon) {
+  const cont = document.getElementById(containerId);
+  if (!cont) return;
+  if (list.length === 0) { cont.innerHTML = `<div class="empty-state" style="padding:40px 0;"><p>Belum ada riwayat.</p></div>`; return; }
+  cont.innerHTML = `<div class="history-list">${list.slice().reverse().slice(0,20).map(h => `
+    <div class="history-item">
+      <div class="history-thumb">${icon}</div>
+      <div class="history-info">
+        <div class="history-title">${h.songTitle}</div>
+        <div class="history-time">${new Date(h.time).toLocaleString('id-ID')}</div>
+      </div>
+      ${h.amount ? `<div class="history-action">Rp ${Number(h.amount).toLocaleString('id')}</div>` : ''}
+    </div>`).join('')}</div>`;
+}
+
+// ============================================================
+// ADMIN FUNCTIONS
+// ============================================================
+function renderAdmin() {
+  renderAdminStats();
+  renderSongListAdmin();
+  renderAlbumListAdmin();
+  renderSosmedAdmin();
+  renderUsersAdmin();
+  updateAlbumDropdown();
+}
+
+function renderAdminStats() {
+  document.getElementById('stat-songs').textContent  = songs.length;
+  document.getElementById('stat-albums').textContent = albums.length;
+  document.getElementById('stat-plays').textContent  = globalStats.plays || 0;
+  // Ambil jumlah user dari Firestore
+  getDocs(collection(db, 'users')).then(snap => {
+    document.getElementById('stat-users').textContent = snap.size;
+  });
+}
+
+function switchAdmin(section) {
+  document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.admin-nav-item').forEach(b => b.classList.remove('active'));
+  const sectionMap = {
+    'dashboard':'admin-dashboard','upload-lagu':'admin-upload-lagu',
+    'kelola-lagu':'admin-kelola-lagu','album':'admin-album',
+    'sosmed':'admin-sosmed','users':'admin-users'
+  };
+  if (sectionMap[section]) { const t = document.getElementById(sectionMap[section]); if (t) t.classList.add('active'); }
+  document.querySelectorAll('.admin-nav-item').forEach(b => {
+    if (b.getAttribute('onclick')?.includes(`'${section}'`)) b.classList.add('active');
+  });
+}
+
+function handleFileSelect(input, labelId, icon) {
+  if (input.files[0]) document.getElementById(labelId).textContent = `${icon} ${input.files[0].name}`;
+}
+
+// ============================================================
+// CLOUDINARY CONFIG
+// ============================================================
+const CLOUDINARY_CLOUD = 'divd96nf4';
+const CLOUDINARY_PRESET = 'vallutd_upload';
+
+async function uploadToCloudinary(file, resourceType = 'auto') {
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('upload_preset', CLOUDINARY_PRESET);
+  formData.append('resource_type', resourceType);
+
+  const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/${resourceType}/upload`, {
+    method: 'POST',
+    body: formData
+  });
+  if (!res.ok) throw new Error('Upload Cloudinary gagal');
+  const data = await res.json();
+  return data.secure_url;
+}
+
+async function uploadSong() {
+  const title       = document.getElementById('upload-title').value.trim();
+  const desc        = document.getElementById('upload-desc').value.trim();
+  const status      = document.getElementById('upload-status').value;
+  const price       = document.getElementById('upload-price').value || '0';
+  const albumId     = document.getElementById('upload-album').value;
+  const audioFile   = document.getElementById('file-audio').files[0];
+  const coverFile   = document.getElementById('file-cover').files[0];
+  const previewFile = document.getElementById('file-preview').files[0];
+
+  if (!title)     { toast('Judul lagu wajib diisi!', 'error'); return; }
+  if (!audioFile) { toast('File audio wajib diupload!', 'error'); return; }
+  if (!coverFile) { toast('Cover lagu wajib diupload!', 'error'); return; }
+
+  showLoading('Mengupload ke Cloudinary... (bisa 1-2 menit)');
+  try {
+    // Upload ke Cloudinary
+    const [audioURL, coverURL] = await Promise.all([
+      uploadToCloudinary(audioFile, 'video'), // audio pakai resource_type video
+      uploadToCloudinary(coverFile, 'image')
+    ]);
+    let previewURL = null;
+    if (previewFile) previewURL = await uploadToCloudinary(previewFile, 'video');
+
+    // Simpan metadata ke Firestore
+    await addDoc(collection(db, 'songs'), {
+      title, desc, status, price, albumId: albumId || null,
+      audioURL, coverURL, previewURL,
+      uploadedAt: new Date().toISOString()
+    });
+    await loadSongs();
+    toast(`Lagu "${title}" berhasil diupload! 🎵`, 'success');
+    resetUploadForm();
+    renderAdminStats();
+    renderSongListAdmin();
+    updateAlbumDropdown();
+  } catch(e) {
+    console.error(e);
+    toast('Gagal upload: ' + e.message, 'error');
+  }
+  hideLoading();
+}
+
+function resetUploadForm() {
+  ['upload-title','upload-desc','upload-price'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('upload-status').value = 'free';
+  document.getElementById('upload-album').value  = '';
+  ['file-audio','file-cover','file-preview'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('audio-filename').textContent   = 'Klik untuk pilih file audio';
+  document.getElementById('cover-filename').textContent   = 'Klik untuk pilih gambar cover';
+  document.getElementById('preview-filename').textContent = 'Klik untuk pilih file preview';
+}
+
+async function deleteSong(id) {
+  if (!confirm('Hapus lagu ini? Tindakan tidak bisa dibatalkan.')) return;
+  showLoading('Menghapus...');
+  try {
+    await deleteDoc(doc(db, 'songs', id));
+    await loadSongs();
+    renderSongListAdmin();
+    renderAdminStats();
+    toast('Lagu berhasil dihapus.', 'success');
+  } catch(e) { toast('Gagal menghapus: ' + e.message, 'error'); }
+  hideLoading();
+}
+
+function renderSongListAdmin() {
+  const cont = document.getElementById('song-list-admin');
+  if (songs.length === 0) {
+    cont.innerHTML = `<div class="empty-state" style="padding:40px 0;"><div class="empty-state-icon">🎵</div><p>Belum ada lagu. Upload lagu terlebih dahulu.</p></div>`; return;
+  }
+  const statusLabel = { free:'Gratis', paid:'Berbayar', premium:'Premium' };
+  const statusBadge = { free:'badge-free', paid:'badge-paid', premium:'badge-premium' };
+  cont.innerHTML = `<table class="data-table">
+    <thead><tr><th>Cover</th><th>Judul</th><th>Status</th><th>Harga</th><th>Diupload</th><th>Aksi</th></tr></thead>
+    <tbody>${songs.map(s => `<tr>
+      <td><div style="width:40px;height:40px;border-radius:6px;overflow:hidden;background:var(--bg4);">${s.coverURL ? `<img src="${s.coverURL}" style="width:100%;height:100%;object-fit:cover;">` : '🎵'}</div></td>
+      <td><strong>${s.title}</strong>${s.desc ? `<div style="font-size:11px;color:var(--text-muted);">${s.desc.slice(0,50)}...</div>` : ''}</td>
+      <td><span class="song-type-badge ${statusBadge[s.status]}">${statusLabel[s.status]}</span></td>
+      <td>${s.status === 'free' ? '—' : `Rp ${Number(s.price||0).toLocaleString('id')}`}</td>
+      <td style="font-size:12px;">${new Date(s.uploadedAt).toLocaleDateString('id-ID')}</td>
+      <td><button class="btn btn-sm" style="background:rgba(232,0,26,0.15);color:var(--red);border:1px solid rgba(232,0,26,0.2);" onclick="deleteSong('${s.id}')">Hapus</button></td>
+    </tr>`).join('')}</tbody>
+  </table>`;
+}
+
+async function createAlbum() {
+  const name      = document.getElementById('album-name').value.trim();
+  const desc      = document.getElementById('album-desc').value.trim();
+  const coverFile = document.getElementById('file-album-cover').files[0];
+  if (!name) { toast('Nama album wajib diisi!', 'error'); return; }
+  showLoading('Membuat album...');
+  try {
+    let coverURL = null;
+    if (coverFile) {
+      const albumId  = 'album_' + Date.now();
+      const coverRef = ref(storage, `albums/${albumId}/cover_${coverFile.name}`);
+      await uploadBytes(coverRef, coverFile);
+      coverURL = await getDownloadURL(coverRef);
+    }
+    await addDoc(collection(db, 'albums'), { name, desc, coverURL, created: new Date().toISOString() });
+    await loadAlbums();
+    toast(`Album "${name}" berhasil dibuat!`, 'success');
+    document.getElementById('album-name').value = '';
+    document.getElementById('album-desc').value = '';
+    document.getElementById('file-album-cover').value = '';
+    document.getElementById('album-cover-filename').textContent = 'Klik untuk pilih cover album';
+    renderAlbumListAdmin();
+    renderAdminStats();
+    updateAlbumDropdown();
+  } catch(e) { toast('Gagal membuat album: ' + e.message, 'error'); }
+  hideLoading();
+}
+
+async function deleteAlbum(id) {
+  if (!confirm('Hapus album ini?')) return;
+  showLoading('Menghapus album...');
+  try {
+    await deleteDoc(doc(db, 'albums', id));
+    // Lepas lagu dari album ini
+    const songsInAlbum = songs.filter(s => s.albumId === id);
+    await Promise.all(songsInAlbum.map(s => updateDoc(doc(db, 'songs', s.id), { albumId: null })));
+    await Promise.all([loadAlbums(), loadSongs()]);
+    renderAlbumListAdmin();
+    updateAlbumDropdown();
+    toast('Album dihapus.', 'success');
+  } catch(e) { toast('Gagal hapus album: ' + e.message, 'error'); }
+  hideLoading();
+}
+
+function renderAlbumListAdmin() {
+  const cont = document.getElementById('album-list-admin');
+  if (albums.length === 0) { cont.innerHTML = `<div class="empty-state" style="padding:40px 0;"><p>Belum ada album.</p></div>`; return; }
+  cont.innerHTML = `<table class="data-table">
+    <thead><tr><th>Cover</th><th>Nama Album</th><th>Lagu</th><th>Dibuat</th><th>Aksi</th></tr></thead>
+    <tbody>${albums.map(a => {
+      const count = songs.filter(s => s.albumId === a.id).length;
+      return `<tr>
+        <td><div style="width:40px;height:40px;border-radius:6px;overflow:hidden;background:var(--bg4);">${a.coverURL ? `<img src="${a.coverURL}" style="width:100%;height:100%;object-fit:cover;">` : '💿'}</div></td>
+        <td><strong>${a.name}</strong></td>
+        <td>${count} lagu</td>
+        <td style="font-size:12px;">${new Date(a.created).toLocaleDateString('id-ID')}</td>
+        <td><button class="btn btn-sm" style="background:rgba(232,0,26,0.15);color:var(--red);border:1px solid rgba(232,0,26,0.2);" onclick="deleteAlbum('${a.id}')">Hapus</button></td>
+      </tr>`;
+    }).join('')}</tbody>
+  </table>`;
+}
+
+function updateAlbumDropdown() {
+  const sel = document.getElementById('upload-album');
+  if (!sel) return;
+  sel.innerHTML = `<option value="">— Tidak dalam album —</option>` + albums.map(a => `<option value="${a.id}">${a.name}</option>`).join('');
+}
+
+async function addSocialMedia() {
+  const platform = document.getElementById('sosmed-platform').value;
+  const label    = document.getElementById('sosmed-label').value.trim();
+  const url      = document.getElementById('sosmed-url').value.trim();
+  if (!url) { toast('URL media sosial wajib diisi!', 'error'); return; }
+  try {
+    await addDoc(collection(db, 'socials'), { platform, label, url });
+    await loadSocials();
+    toast('Media sosial berhasil ditambahkan!', 'success');
+    document.getElementById('sosmed-label').value = '';
+    document.getElementById('sosmed-url').value   = '';
+    renderSosmedAdmin();
+    renderFooterSocials();
+    renderProfileSocials();
+  } catch(e) { toast('Gagal menambahkan: ' + e.message, 'error'); }
+}
+
+async function deleteSocial(id) {
+  try {
+    await deleteDoc(doc(db, 'socials', id));
+    await loadSocials();
+    renderSosmedAdmin();
+    renderFooterSocials();
+    renderProfileSocials();
+    toast('Media sosial dihapus.', 'success');
+  } catch(e) { toast('Gagal menghapus.', 'error'); }
+}
+
+function renderSosmedAdmin() {
+  const cont = document.getElementById('sosmed-list-admin');
+  if (socials.length === 0) { cont.innerHTML = `<div class="empty-state" style="padding:40px 0;"><p>Belum ada media sosial.</p></div>`; return; }
+  cont.innerHTML = `<table class="data-table">
+    <thead><tr><th>Platform</th><th>Label</th><th>URL</th><th>Aksi</th></tr></thead>
+    <tbody>${socials.map(s => `<tr>
+      <td><span style="font-size:18px;">${socialIcons[s.platform]||'🔗'}</span> ${s.platform}</td>
+      <td>${s.label || '—'}</td>
+      <td><a href="${s.url}" target="_blank" style="color:var(--blue);font-size:13px;">${s.url.slice(0,40)}...</a></td>
+      <td><button class="btn btn-sm" style="background:rgba(232,0,26,0.15);color:var(--red);border:1px solid rgba(232,0,26,0.2);" onclick="deleteSocial('${s.id}')">Hapus</button></td>
+    </tr>`).join('')}</tbody>
+  </table>`;
+}
+
+function renderUsersAdmin() {
+  const tbody = document.getElementById('users-tbody');
+  getDocs(collection(db, 'users')).then(snap => {
+    const allUsers = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    const roleLabel = { admin:'Admin', premium:'Premium', user:'Free' };
+    const roleStyle = { admin:'background:rgba(232,0,26,0.15);color:var(--red);', premium:'background:rgba(255,184,0,0.15);color:var(--premium);', user:'background:rgba(255,255,255,0.05);color:var(--text-muted);' };
+    tbody.innerHTML = allUsers.map(u => `<tr>
+      <td><strong>${u.name}</strong></td>
+      <td>${u.email}</td>
+      <td><span class="user-badge" style="${roleStyle[u.role]}border:1px solid;border-radius:100px;padding:3px 10px;">${roleLabel[u.role]}</span></td>
+      <td style="font-size:12px;">${new Date(u.joined).toLocaleDateString('id-ID')}</td>
+      <td>${u.role !== 'admin' ? `<button class="btn btn-xs btn-ghost" onclick="togglePremium('${u.id}')">${u.role === 'premium' ? 'Downgrade' : 'Upgrade Premium'}</button>` : '—'}</td>
+    </tr>`).join('');
+  });
+}
+
+async function togglePremium(uid) {
+  const userRef  = doc(db, 'users', uid);
+  const userSnap = await getDoc(userRef);
+  if (!userSnap.exists()) return;
+  const u       = userSnap.data();
+  const newRole = u.role === 'premium' ? 'user' : 'premium';
+  await updateDoc(userRef, { role: newRole });
+  toast(`Status diubah ke ${newRole}.`, 'success');
+  if (currentUser && currentUser.uid === uid) {
+    currentUser.role = newRole;
+    updateNavAuth();
+    renderAkun();
+  }
+  renderUsersAdmin();
+}
+
+// ============================================================
+// PLAYER
+// ============================================================
+function playSong(songId) {
+  const song = songs.find(s => s.id === songId);
+  if (!song) return;
+  const canPlay = checkAccess(song);
+  if (!canPlay) return;
+  songQueue        = songs;
+  currentSongIndex = songs.indexOf(song);
+  loadAndPlay(song);
+  // Catat play history
+  if (currentUser) {
+    addDoc(collection(db, 'playHistory'), { userId: currentUser.uid, songId: song.id, songTitle: song.title, time: new Date().toISOString() });
+    playHistory.push({ songTitle: song.title, time: new Date().toISOString() });
+    if (currentPage === 'akun') renderAkun();
+  }
+  // Tambah global stats
+  updateDoc(doc(db, 'meta', 'stats'), { plays: increment(1) }).catch(() =>
+    setDoc(doc(db, 'meta', 'stats'), { plays: 1 })
+  );
+  globalStats.plays = (globalStats.plays || 0) + 1;
+}
+
+function checkAccess(song) {
+  if (song.status === 'free') return true;
+  if (!currentUser) {
+    if (song.previewURL) { playPreview(song); return false; }
+    toast('Masuk untuk mendengarkan lagu ini.', 'info');
+    openModal('login');
+    return false;
+  }
+  if (song.status === 'premium') {
+    if (currentUser.role === 'premium' || currentUser.role === 'admin') return true;
+    toast('Lagu ini hanya untuk member Premium. Upgrade sekarang!', 'info');
+    navigate('akun');
+    return false;
+  }
+  if (song.status === 'paid') {
+    const bought = buyHistory.find(b => b.songId === song.id);
+    if (bought || currentUser.role === 'premium' || currentUser.role === 'admin') return true;
+    if (song.previewURL) { playPreview(song); toast('Ini adalah preview. Beli lagu untuk dengar penuh.', 'info'); return false; }
+    if (confirm(`Beli lagu "${song.title}" seharga Rp ${Number(song.price).toLocaleString('id')}?`)) {
+      addDoc(collection(db, 'buyHistory'), { userId: currentUser.uid, songId: song.id, songTitle: song.title, amount: song.price, time: new Date().toISOString() });
+      buyHistory.push({ songId: song.id, songTitle: song.title, amount: song.price, time: new Date().toISOString() });
+      toast(`Berhasil membeli "${song.title}"! 🎉`, 'success');
+      return true;
+    }
+    return false;
+  }
+  return true;
+}
+
+function playPreview(song) { if (song.previewURL) loadSongToPlayer(song, song.previewURL); }
+function loadAndPlay(song)  { loadSongToPlayer(song, song.audioURL); }
+
+function loadSongToPlayer(song, src) {
+  audio.src = src;
+  audio.load();
+  audio.volume = (document.getElementById('vol-slider').value || 80) / 100;
+  audio.play().catch(() => {});
+  isPlaying = true;
+  document.getElementById('player-title').textContent = song.title;
+  const thumb = document.getElementById('player-thumb');
+  thumb.innerHTML = song.coverURL ? `<img src="${song.coverURL}" style="width:100%;height:100%;object-fit:cover;border-radius:6px;">` : '🎵';
+  document.getElementById('play-icon').style.display  = 'none';
+  document.getElementById('pause-icon').style.display = 'block';
+  document.getElementById('mini-player').classList.add('visible');
+  const activePage = document.querySelector('.page.active');
+  if (activePage) activePage.style.paddingBottom = '80px';
+}
+
+function togglePlay() {
+  if (!audio.src) return;
+  if (isPlaying) {
+    audio.pause(); isPlaying = false;
+    document.getElementById('play-icon').style.display  = 'block';
+    document.getElementById('pause-icon').style.display = 'none';
+  } else {
+    audio.play(); isPlaying = true;
+    document.getElementById('play-icon').style.display  = 'none';
+    document.getElementById('pause-icon').style.display = 'block';
+  }
+}
+
+function nextSong() {
+  if (!songQueue.length) return;
+  currentSongIndex = (currentSongIndex + 1) % songQueue.length;
+  playSong(songQueue[currentSongIndex].id);
+}
+function prevSong() {
+  if (!songQueue.length) return;
+  currentSongIndex = (currentSongIndex - 1 + songQueue.length) % songQueue.length;
+  playSong(songQueue[currentSongIndex].id);
+}
+function seekProgress(e) {
+  if (!audio.duration) return;
+  const rect  = e.currentTarget.getBoundingClientRect();
+  audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+}
+function setVolume(v) { audio.volume = v / 100; }
+function formatTime(t) { return `${Math.floor(t/60)}:${Math.floor(t%60).toString().padStart(2,'0')}`; }
+
+audio.addEventListener('timeupdate', () => {
+  if (!audio.duration) return;
+  const pct = (audio.currentTime / audio.duration) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('time-current').textContent  = formatTime(audio.currentTime);
+  document.getElementById('time-total').textContent    = formatTime(audio.duration);
+});
+audio.addEventListener('ended', () => nextSong());
+
+// ============================================================
+// ALBUM OPEN
+// ============================================================
+function openAlbum(albumId) {
+  const album      = albums.find(a => a.id === albumId);
+  if (!album) return;
+  const albumSongs = songs.filter(s => s.albumId === albumId);
+  navigate('musik');
+  const grid    = document.getElementById('musik-songs-grid');
+  const titleEl = document.getElementById('musik-section-title');
+  if (titleEl) titleEl.textContent = `💿 ${album.name}`;
+  if (albumSongs.length === 0) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><p>Belum ada lagu dalam album ini.</p></div>`;
+  } else {
+    grid.innerHTML = albumSongs.map(s => songCardHTML(s)).join('');
+  }
+}
+
+// ============================================================
+// FILTERS & SEARCH
+// ============================================================
+function filterSongs(filter, btn) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderSongsGrid();
+}
+function searchSongs() { renderSongsGrid(); }
+
+// ============================================================
+// ACCOUNT TABS
+// ============================================================
+function switchAccountTab(tab) {
+  document.querySelectorAll('#akun-logged .admin-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('akun-' + tab).classList.add('active');
+  document.querySelectorAll('.account-nav-item').forEach(b => {
+    b.classList.remove('active');
+    if (b.getAttribute('onclick')?.includes(`'${tab}'`)) b.classList.add('active');
+  });
+}
+
+// ============================================================
+// TOAST
+// ============================================================
+function toast(msg, type = 'info') {
+  const icons = { success:'✅', error:'❌', info:'ℹ️' };
+  const cont  = document.getElementById('toast-container');
+  const el    = document.createElement('div');
+  el.className = `toast ${type}`;
+  el.innerHTML = `<span>${icons[type]||'ℹ️'}</span><span>${msg}</span>`;
+  cont.appendChild(el);
+  setTimeout(() => { el.style.animation = 'slideOut 0.3s ease forwards'; setTimeout(() => el.remove(), 300); }, 3500);
+}
+
+// ============================================================
+// MOBILE NAV
+// ============================================================
+function openMobileNav()  { document.getElementById('mobile-nav').classList.add('active');    document.body.style.overflow = 'hidden'; }
+function closeMobileNav() { document.getElementById('mobile-nav').classList.remove('active'); document.body.style.overflow = ''; }
+
+// ============================================================
+// INIT — Load data lalu tampilkan home
+// ============================================================
+(async () => {
+  await loadAllData();
+  navigate('home');
+})();
+
+// Expose functions ke HTML onclick
+window.navigate          = navigate;
+window.openModal         = openModal;
+window.closeModal        = closeModal;
+window.switchTab         = switchTab;
+window.doLogin           = doLogin;
+window.doRegister        = doRegister;
+window.logout            = logout;
+window.filterSongs       = filterSongs;
+window.searchSongs       = searchSongs;
+window.playSong          = playSong;
+window.togglePlay        = togglePlay;
+window.nextSong          = nextSong;
+window.prevSong          = prevSong;
+window.seekProgress      = seekProgress;
+window.setVolume         = setVolume;
+window.openAlbum         = openAlbum;
+window.switchAdmin       = switchAdmin;
+window.switchAccountTab  = switchAccountTab;
+window.handleFileSelect  = handleFileSelect;
+window.uploadSong        = uploadSong;
+window.resetUploadForm   = resetUploadForm;
+window.deleteSong        = deleteSong;
+window.createAlbum       = createAlbum;
+window.deleteAlbum       = deleteAlbum;
+window.addSocialMedia    = addSocialMedia;
+window.deleteSocial      = deleteSocial;
+window.togglePremium     = togglePremium;
+window.openMobileNav     = openMobileNav;
+window.closeMobileNav    = closeMobileNav;
+window.toast             = toast;
+</script>
+</body>
+</html>
